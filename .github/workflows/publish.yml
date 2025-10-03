@@ -47,7 +47,7 @@ jobs:
           path: publish/${{ matrix.rid }}
           
       - name: Test
-        run: cd AnsibleRunner/publish/${{ matrix.rid }}/ && ls -a
+        run: cd ./AnsibleRunner/publish/${{ matrix.rid }}/ && ls -a
           
       - uses: actions/checkout@v3
       - name: Release
