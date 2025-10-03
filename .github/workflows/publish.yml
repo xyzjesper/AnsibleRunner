@@ -47,7 +47,7 @@ jobs:
           path: publish/${{ matrix.rid }}
           
       - name: Test
-        run: cd publish${{ matrix.rid }}/ && ls -a
+        run: cd publish/${{ matrix.rid }}/ && ls -a
           
       - uses: actions/checkout@v3
       - name: Release
@@ -57,5 +57,5 @@ jobs:
           tag_name: ${{ github.run_id }}
           name: "Release for ${{ github.run_id }}"
           generate_release_notes: true
-          files: publish${{ matrix.rid }}/AnsibleRunner-${{ matrix.rid }}
+          files: publish/${{ matrix.rid }}/AnsibleRunner-${{ matrix.rid }}
             
