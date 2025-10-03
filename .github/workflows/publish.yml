@@ -5,6 +5,10 @@ on:
     branches:
       - master
 
+permissions:
+  packages: write
+  contents: write
+
 jobs:
   build:
     name: Build for ${{ matrix.rid }}
@@ -23,7 +27,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '9.0.x' 
+          dotnet-version: '9.0.x'
 
       - name: Restore dependencies
         run: dotnet restore
@@ -41,3 +45,11 @@ jobs:
         with:
           name: AnsibleRunner-${{ matrix.rid }}
           path: publish/${{ matrix.rid }}
+      - uses: actions/checkout@v3
+      - name: Create a Release
+          uses: elgohr/Github-Release-Action@v5
+            env:
+              GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            with:
+              title: Release for Run ${{ github.run_id }}
+              tag: ${{ github.run_id }}
