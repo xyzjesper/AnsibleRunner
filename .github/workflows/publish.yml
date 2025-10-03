@@ -48,8 +48,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Create a Release
         uses: elgohr/Github-Release-Action@v5
-          env:
-            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          with:
-            title: Release for Run ${{ github.run_id }}
-            tag: ${{ github.run_id }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          title: Release for Run ${{ github.run_id }}
+          tag: ${{ github.run_id }}
