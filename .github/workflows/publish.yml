@@ -45,6 +45,10 @@ jobs:
         with:
           name: AnsibleRunner-${{ matrix.rid }}
           path: publish/${{ matrix.rid }}
+          
+      - name: Test
+        run: ls -a
+          
       - uses: actions/checkout@v3
       - name: Release
         uses: softprops/action-gh-release@v2
