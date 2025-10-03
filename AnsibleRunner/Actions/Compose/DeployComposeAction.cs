@@ -55,10 +55,7 @@ public class DeployComposeAction
 
                 var curlCommand = await BashHelper.RunCommand(
                     $"cd /compose/{composeDataObject.Name}/ && curl -L {composeDataObject.Url} > docker-compose.yml");
-
-                // var dockerCommand = await BashHelper.RunCommand($"cd /compose/{composeDataObject.Name} && docker compose up -d");
-
-                Console.WriteLine(curlCommand);
+                var dockerCommand = await BashHelper.RunCommand($"cd /compose/{composeDataObject.Name} && docker compose up -d");
                 
                 AnsiConsole.MarkupLine($"[white]{directory.FullName} deployed.[/]");
             }
