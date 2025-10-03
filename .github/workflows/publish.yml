@@ -47,7 +47,7 @@ jobs:
           path: publish/${{ matrix.rid }}
           
       - name: Test
-        run: tuch publish/${{ matrix.rid }}/AnsibleRunner
+        run: touch publish/${{ matrix.rid }}/AnsibleRunner
           
       - uses: actions/checkout@v3
       - name: Release
